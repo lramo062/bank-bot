@@ -24,26 +24,26 @@ app.get('/', function (req, res) {
     res.send('Hello world, I am a simple bank bot');
 });
 
-// // initialy for Facebook verification (webhooks)
-// app.get('/webhook/', function (req, res) {
-//     if (req.query['hub.verify_token'] === 'asdfjkl;') {
-//         res.send(req.query['hub.challenge'])
-//     }
-//     res.send('Error, wrong token')
-// })
-
-app.post('/webhook/', function (req, res) {
-    let messaging_events = req.body.entry[0].messaging;
-    for (let i = 0; i < messaging_events.length; i++) {
-        let event = req.body.entry[0].messaging[i];
-        let sender = event.sender.id;
-        if (event.message && event.message.text) {
-            let text = event.message.text;
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
-        }
+// initialy for Facebook verification (webhooks)
+app.get('/webhook/', function (req, res) {
+    if (req.query['hub.verify_token'] === 'asdfjkl;') {
+        res.send(req.query['hub.challenge'])
     }
-    res.sendStatus(200);
-});
+    res.send('Error, wrong token')
+})
+
+// app.post('/webhook/', function (req, res) {
+//     let messaging_events = req.body.entry[0].messaging;
+//     for (let i = 0; i < messaging_events.length; i++) {
+//         let event = req.body.entry[0].messaging[i];
+//         let sender = event.sender.id;
+//         if (event.message && event.message.text) {
+//             let text = event.message.text;
+//             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+//         }
+//     }
+//     res.sendStatus(200);
+// });
 
 
 const token = "EAADqjcqoQfUBAJO7VdIluMYBQPbVnOHs0L6t1sV8cifJr5isyNpRW9CboAyZCkIo2g7kA2CUPqVvXnvYKDoyBBiZCDm1ZAI5zyMJ2ftH9Y57okvsOA1ZCf2ZAZAYUSRTDt8P5SIqFUpjlmdKVbCnycZBS0NOPGXDBMVNczhJMavrwZDZD";
