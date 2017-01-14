@@ -1,0 +1,13 @@
+{
+  "name": "bank-bot",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "express": "~4.14.0",
+    "request": "2.79.0"
+  }
+}
