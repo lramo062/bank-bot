@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 // Index route
 app.get('/', function (req, res) {
-    res.send('Hello world, I am a chat bot');
+    res.send('Hello world, I am a simple bank bot');
 });
 
 // // initialy for Facebook verification (webhooks)
