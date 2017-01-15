@@ -10,9 +10,11 @@ const fetch = require('node-fetch');
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
-const config = require('./config');
 const app = express();
 
+const config = require('./config');
+var FB = require('./facebook')
+var Bot = require('./bot');
 
 app.set('port', (process.env.PORT || 5000));
 
