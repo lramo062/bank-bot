@@ -108,11 +108,8 @@ const actions = {
         }
     },
     sayHello({context, entities}) {
-        entities.forEach(value => {
-            console.log("VALUE: " + value);
-        });
         context.name = entities.contact;
-        return Promise.resolve(context);
+        return Promise.resolve(context.name);
     }
 };
 
