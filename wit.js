@@ -104,10 +104,11 @@ var actions = {
 
 // SETUP THE WIT.AI SERVICE
 var getWit = function () {
-	console.log('GRABBING WIT')
+    console.log('GRABBING WIT')
     return new Wit({
         accessToken:config.WIT_TOKEN,
-        actions
+        actions,
+        logger: new log.Logger(log.INFO)
     });
 };
 
