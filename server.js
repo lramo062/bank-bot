@@ -105,56 +105,40 @@ const findOrCreateSession = (fbid) => {
 };
 
 const actions = {
-  send({sessionId}, {text}) {
-    // Our bot has something to say!
-    // Let's retrieve the Facebook user whose session belongs to
-    const recipientId = sessions[sessionId].fbid;
-    if (recipientId) {
-      // Yay, we found our recipient!
-      // Let's forward our bot response to her.
-      // We return a promise to let our bot know when we're done sending
-      return sendTextMessage(recipientId, text)
-      .then(() => null)
-      .catch((err) => {
-        console.error(
-          'Oops! An error occurred while forwarding the response to',
-          recipientId,
-          ':',
-          err.stack || err
-        );
-      });
-    } else {
-      console.error('Oops! Couldn\'t find user for session:', sessionId);
-      // Giving the wheel back to our bot
-      return Promise.resolve()
-    }
-  },
-  // You should implement your custom actions here
-  // See https://wit.ai/docs/quickstart
+  // send({sessionId}, {text}) {
+  //   // Our bot has something to say!
+  //   // Let's retrieve the Facebook user whose session belongs to
+  //   const recipientId = sessions[sessionId].fbid;
+  //   if (recipientId) {
+  //     // Yay, we found our recipigent!
+  //     // Let's forward our bot response to her.
+  //     // We return a promise to let our bot know when we're done sending
+  //     return sendTextMessage(recipientId, text)
+  //     .then(() => null)
+  //     .catch((err) => {
+  //       console.error(
+  //         'Oops! An error occurred while forwarding the response to',
+  //         recipientId,
+  //         ':',
+  //         err.stack || err
+  //       );
+  //     });
+  //   } else {
+  //     console.error('Oops! Couldn\'t find user for session:', sessionId);
+  //     // Giving the wheel back to our bot
+  //     return Promise.resolve()
+  //   }
+  // },
+  // // You should implement your custom actions here
+    // // See https://wit.ai/docs/quickstart
+
+    send({context, entites}) {
+        return new Promise(function(resolve,reject) {
+            context.name = "Bobby";
+            return resolve(context);
+        });
+    },
 };
-
-
-const fbMessage = (id, text) => {
-  const body = JSON.stringify({
-    recipient: { id },
-    message: { text },
-  });
-  const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
-  return fetch('https://graph.facebook.com/me/messages?' + qs, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body,
-  })
-  .then(rsp => rsp.json())
-  .then(json => {
-    if (json.error && json.error.message) {
-      throw new Error(json.error.message);
-    }
-    return json;
-  });
-};
-
-
 
 
 // Setting up our bot
