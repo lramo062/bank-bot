@@ -133,7 +133,7 @@ const actions = {
   // // You should implement your custom actions here
     // // See https://wit.ai/docs/quickstart
 
-    send({context}, {entites}) {
+    send({context, entites}) {
         return new Promise(function(resolve,reject) {
             context.name = "Bobby";
             return resolve(context);
