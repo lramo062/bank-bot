@@ -108,9 +108,7 @@ const actions = {
         }
     },
     sayHello({context, entities}) {
-        console.log("CONTEXT: " + context);
-        console.log("ENTITIES: " + entities);
-        context.name = entities.contact;
+        context.name = "test";
         return Promise.resolve("Hi " + context.name);
     }
 };
