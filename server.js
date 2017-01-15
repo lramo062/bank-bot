@@ -12,9 +12,9 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 
-const config = require('./config');
-var FB = require('./facebook')
-var Bot = require('./bot');
+const config = require('./config.js');
+var FB = require('./facebook.js')
+var Bot = require('./bot.js');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -52,6 +52,7 @@ app.post('/webhooks', function (req, res) {
       })
     }
   }
+    
 
   res.sendStatus(200)
 })
