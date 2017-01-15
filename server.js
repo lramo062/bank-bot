@@ -108,7 +108,9 @@ const actions = {
         }
     },
     sayHello({context, entities}) {
-        console.log("ENTITIES: " + entities);
+        entities.forEach(value => {
+            console.log("VALUE: " + value);
+        });
         context.name = entities.contact;
         return Promise.resolve(context);
     }
