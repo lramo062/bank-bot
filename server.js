@@ -109,7 +109,8 @@ const actions = {
     },
     sayHello({context, entities}) {
         context.name = entities.contact;
-        return Promise.resolve(context);
+        return Promise.resolve("Hi " + context.name + ". I can help you get basic bank information." +
+                              'Please tell me your bank like: "my bank is chase"'.);
     }
 };
 
