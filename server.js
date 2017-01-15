@@ -40,13 +40,13 @@ app.get('/', function (req, res) {
     res.send('Hello world, I am a simple bank bot');
 });
 
-// initialy for Facebook verification (webhooks)
-// app.get('/webhook/', function (req, res) {
-//     if (req.query['hub.verify_token'] === 'asdfjkl;') {
-//         res.send(req.query['hub.challenge']);
-//     }
-//     res.send('Error, wrong token');
-// });
+// for Facebook verification (webhooks)
+app.get('/webhook/', function (req, res) {
+    if (req.query['hub.verify_token'] === 'asdfjkl;') {
+        res.send(req.query['hub.challenge']);
+    }
+    res.send('Error, wrong token');
+});
 
 // app.post('/webhook/', function (req, res) {
 //     let messaging_events = req.body.entry[0].messaging;
@@ -80,28 +80,7 @@ app.get('/', function (req, res) {
 //         }
 //     });
 // };
-const fbMessage = (id, text) => {
-  const body = JSON.stringify({
-    recipient: { id },
-    message: { text },
-  });
-  const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
-  return fetch('https://graph.facebook.com/me/messages?' + qs, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body,
-  })
-  .then(rsp => rsp.json())
-  .then(json => {
-    if (json.error && json.error.message) {
-      throw new Error(json.error.message);
-    }
-    return json;
-  });
-};
 
-// ----------------------------------------------------------------------------
-// Wit.ai bot specific code
 
 // This will contain all user sessions.
 // Each session has an entry:
@@ -124,7 +103,6 @@ const findOrCreateSession = (fbid) => {
   }
   return sessionId;
 };
-
 
 const actions = {
   send({sessionId}, {text}) {
@@ -154,6 +132,29 @@ const actions = {
   // You should implement your custom actions here
   // See https://wit.ai/docs/quickstart
 };
+
+
+const fbMessage = (id, text) => {
+  const body = JSON.stringify({
+    recipient: { id },
+    message: { text },
+  });
+  const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
+  return fetch('https://graph.facebook.com/me/messages?' + qs, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body,
+  })
+  .then(rsp => rsp.json())
+  .then(json => {
+    if (json.error && json.error.message) {
+      throw new Error(json.error.message);
+    }
+    return json;
+  });
+};
+
+
 
 
 // Setting up our bot
