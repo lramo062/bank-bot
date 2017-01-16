@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 
 /* 
-   Creating a server for our fb-bot 
+   TODO: scale
 */
 
 'use strict'
@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
     res.send('Hello world, I am a simple bank bot');
 });
+
 
 // for Facebook verification (webhooks)
 app.get('/webhook/', function (req, res) {
