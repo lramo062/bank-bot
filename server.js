@@ -83,6 +83,7 @@ const findOrCreateSession = (fbid) => {
 
 // Our bot actions
 const actions = {
+
     send({sessionId}, {text}) {
         // Our bot has something to say!
         // Let's retrieve the Facebook user whose session belongs to
@@ -107,6 +108,8 @@ const actions = {
             return Promise.resolve()
         }
     },
+
+    
     sayHello({context, entities}) {
         if(entities.contact) {
             context.name = entities.contact[0].value;
@@ -117,6 +120,18 @@ const actions = {
             return Promise.resolve(context);
         }
     }
+
+    getBank({context, entities}) {
+        if(entities.bank_name) {
+            context.bank_name = entities.bank_name[0].value;
+            return Promise.resolve(context);
+        }
+        else {
+            context.bank_name = false;
+            return Promise.resolve(context);
+        }
+    },
+    
 };
 
 
