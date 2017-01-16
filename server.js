@@ -110,7 +110,7 @@ const actions = {
     sayHello({context, entities}) {
         context.name = entities.contact;
         console.log("CONTEXT: " + JSON.stringify(context));
-        return Promise.resolve(context.name);
+        return Promise.resolve(context.name[0].value);
     }
 };
 
