@@ -119,7 +119,7 @@ const actions = {
             context.no_name = true;
             return Promise.resolve(context);
         }
-    }
+    },
 
     getBank({context, entities}) {
         if(entities.bank_name) {
