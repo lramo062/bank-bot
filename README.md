@@ -1,10 +1,16 @@
 # bank-bot
-A facebook messenger bot that can provide you with simple banking information
+A facebook messenger bot that can provide you with simple banking information by using trivial AI (wit.ai).
 
-## Getting Started
+## Getting Started (Use)
 
 * Search for @simplebankbot on Facebook Messenger
 * Start messenging!
+
+## Getting Started (Developer)
+* Create a Facebook Developer App
+* Connect your webhook (will need to deploy with heroku, aws, google app engine)
+* Create a wit.ai app
+* Write your secrets to the config.js file
 
 ## Prerequisites
 
