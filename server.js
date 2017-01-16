@@ -114,7 +114,7 @@ const actions = {
         }
         else {
             context.no_name = true;
-            return new Promise.resolve(context);
+            return Promise.resolve(context);
         }
     }
 };
