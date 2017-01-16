@@ -108,9 +108,14 @@ const actions = {
         }
     },
     sayHello({context, entities}) {
-        context.name = entities.contact[0].value;
-        console.log("CONTEXT: " + JSON.stringify(entities));
-        return Promise.resolve(context);
+        if(entities.contact) {
+            context.name = entities.contact[0].value;
+            return Promise.resolve(context);
+        }
+        else {
+            context.no_name = true;
+            return new Promise(context);
+        }
     }
 };
 
