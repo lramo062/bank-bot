@@ -10,9 +10,9 @@ function add_account() {
         json: {
             'client_id': '5878475cbdc6a46f20f16d99',
             'secret': '2b178ac46404af33079379a034fd11',
-            'username': 'xlester7x',
-            'password': 'baller72910',
-            'type': 'chase'
+            'username': '',
+            'password': '',
+            'type': ''
         }
     };
 
