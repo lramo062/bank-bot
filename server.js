@@ -11,6 +11,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
+const plaid = require('./plaid.js');
 
 const config = require('./config.js');
 const Wit = require('node-wit').Wit;
@@ -132,6 +133,30 @@ const actions = {
             return Promise.resolve(context);
         }
     },
+
+    getUsername({context, entities}) {
+	if(entities.username) {
+	    context.username = entities.username[0].value;
+	    return Promise.resolve(context);
+	}
+	else {
+	    context.username = false;
+	    return Promise.resolve(context);
+	}
+    }
+
+    getPassword({context, entities}) {
+	if(entities.password) {
+	    context.password = entities.password[0].value;
+	    return Promise.resolve(context);
+	}
+	else {
+	    context.password = false;
+	    return Promise.resolve(context);
+	}
+    }
+
+    //plaid.add_account(
     
 };
 
