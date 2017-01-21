@@ -22,6 +22,45 @@ function add_account() {
     });
 };
 
+function add_income() {
+
+    //request body
+    let body = {
+	json: {
+	    'client_id': '5878475cbdc6a46f20f16d99',
+            'secret': '2b178ac46404af33079379a034fd11',
+            'username': '',
+            'password': '',
+            'type': ''
+        }
+    };
+
+    request.post(host + '/balance', body, (err, res, body) => {
+        if(!err)
+            console.log(body);
+    });
+};
+
+function add_risk() {
+    
+
+    //request body
+    let body = {
+	json: {
+	    'client_id': '5878475cbdc6a46f20f16d99',
+            'secret': '2b178ac46404af33079379a034fd11',
+            'username': '',
+            'password': '',
+            'type': ''
+        }
+    };
+
+    request.post(host + '/balance', body, (err, res, body) => {
+        if(!err)
+            console.log(body);
+    });
+};
+
 function get_transactions() {
 
     // request body
